@@ -55,13 +55,14 @@ const Contactanos = () => {
                         <h1>Contactanos</h1>
                     </Box>
                 </Grid>
-                <div class="contact-content">
-                    <form onSubmit={formSubmit} id="my-form">
-                        <label>Email:</label>
-                        <input type="email" name="email" />
-                        <label>Message:</label>
-                        <input type="text" name="message" />
-                        <button type="submit">Submit</button>
+               
+                <div className="contact-content" >
+                    <form onSubmit={formSubmit} id="my-form">                    
+                        <label id="texto">Email:</label>
+                        <input id="campos" type="email" name="email" />
+                        <label id="texto">Message:</label>
+                        <input id="campos" type="text" name="message" />
+                        <button id="submit" type="submit">Submit</button>
                     </form>
                  </div>
                  <Snackbar open={toastOpen} autoHideDuration={6000} onClose={handleToastClose}>
