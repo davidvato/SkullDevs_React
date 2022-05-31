@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { Button, TextField, Grid, Box, Snackbar, Alert } from "@mui/material";
-import '../css/index.css';
+import React from "react";
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 const Contactanos = () => {
-    
-    const [email, setEmail] = useState("")
-    const [mensaje, setMensaje] = useState("")
-    const [emailError, setEmailError] = useState(false)
-    const [mensajeError, setMensajeError] = useState(false)
     const [formStatus, setFormStatus] = React.useState("");
     const [formStatusSeverity, setFormStatusSeverity] = React.useState("");
     const [toastOpen, setToastOpen] = React.useState(false);
@@ -16,22 +13,13 @@ const Contactanos = () => {
         setToastOpen(false)
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-
-        setEmailError(email == '')
-        setMensajeError(mensaje == '')
-
-        if (email == "" || mensaje == "") {
-            return
-        }
-
+    const formSubmit = (event) => {
+        event.preventDefault();
+        
+        var data = new FormData(event.target);
         fetch("https://formspree.io/f/xayvdkay", {
             method: "POST",
-            body: JSON.stringify({
-                email: email,
-                message: mensaje
-            }),
+            body: data,
             headers: {
                 'Accept': 'application/json'
             }
@@ -54,55 +42,36 @@ const Contactanos = () => {
             setFormStatusSeverity("error");
             setFormStatus("Oops! Hubo un problema enviando tu informacion.");
             setToastOpen(true);
-        }).finally(() => {
-            document.getElementById("my-form").reset();
         });
+
+        document.getElementById("my-form").reset();
     }
 
     return (
-        <div id="contact">
+        <div id="contacto">
             <Grid container >
                 <Grid item xs={12}>
                     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <h1>Contactanos</h1>
                     </Box>
                 </Grid>
-            <form id="my-form" noValidate autoComplete="off" onSubmit={handleSubmit}>
-                <TextField
-                onChange={(event) => setEmail(event.target.value)}
-                id="field"
-                label="Email"
-                variant="outlined"
-                color="secondary"
-                required
-                error={emailError}
-                />
-                <TextField
-                onChange={(event) => setMensaje(event.target.value)}
-                id="field"
-                label="Mensaje"
-                variant="outlined"
-                color="secondary"
-                required
-                multiline
-                rows={3}
-                error={mensajeError}
-                />
-                <Button
-                type="submit"
-                color="secondary"
-                variant="contained">Enviar</Button>
-            </form>
-            <Snackbar open={toastOpen} autoHideDuration={6000} onClose={handleToastClose}>
+               
+                <div className="contact-content" >
+                    <form onSubmit={formSubmit} id="my-form">                    
+                        <label id="texto">Email:</label>
+                        <input id="campos" type="email" name="email" />
+                        <label id="texto">Message:</label>
+                        <input id="campos" type="text" name="message" />
+                        <button id="submit" type="submit">Submit</button>
+                    </form>
+                 </div>
+                 <Snackbar open={toastOpen} autoHideDuration={6000} onClose={handleToastClose}>
                     <Alert severity={formStatusSeverity} sx={{ width: '100%' }} onClose={handleToastClose}>
                         {formStatus}
                     </Alert>
                 </Snackbar>
-            
-        </Grid>
+            </Grid>
         </div>
-        
-
     )
 }
 

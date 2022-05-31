@@ -68,3 +68,9 @@ label#texto {
   margin: -100px 0 0 -100px;
   /* is width and height divided by two */
 }
+
+#field {
+  margin-top: 20;
+  margin-bottom: 20;
+  display: block;
+}

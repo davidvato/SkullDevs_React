@@ -1,17 +1,12 @@
 import * as React from 'react';
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
+import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from "@mui/lab";
+
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import CodeIcon from '@mui/icons-material/Code';
 import RepeatIcon from '@mui/icons-material/Repeat';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+
+import { Typography, Grid, Box } from "@mui/material";
 
 export default function Servicios() {
   return (
