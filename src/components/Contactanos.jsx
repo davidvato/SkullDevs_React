@@ -73,7 +73,8 @@ const Contactanos = () => {
                 id="field"
                 label="Email"
                 variant="outlined"
-                color="secondary"
+                color="secondary"  
+                size= 'medium'              
                 required
                 error={emailError}
                 />
@@ -84,8 +85,6 @@ const Contactanos = () => {
                 variant="outlined"
                 color="secondary"
                 required
-                multiline
-                rows={3}
                 error={mensajeError}
                 />
                 <Button

@@ -69,8 +69,12 @@ label#texto {
   /* is width and height divided by two */
 }
 
-#field {
+.MuiTextField-root {
   margin-top: 20;
   margin-bottom: 20;
-  display: block;
+  margin-right: 30px;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  margin-right: 30px;
 }
